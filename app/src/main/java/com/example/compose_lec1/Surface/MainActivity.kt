@@ -50,6 +50,11 @@ fun AppReview(modifier: Modifier = Modifier.Companion) {
             Text(text = "The following error has ", modifier = Modifier.Companion.padding(16.dp))
 
 
+
+
+
+
+
 }
 
     }

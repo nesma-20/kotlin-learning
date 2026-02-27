@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Compose_lec1">
         <activity
-            android:name=".Surface.MainActivity"
+            android:name=".statability.statabilityActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Compose_lec1">

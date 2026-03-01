@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">compose_lec1</string>
+    <string name="developer_image_description">an illustration for a developer </string>
 </resources>

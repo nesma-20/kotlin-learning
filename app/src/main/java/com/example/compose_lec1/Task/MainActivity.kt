@@ -1,0 +1,107 @@
+package com.example.compose_lec1.Task
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.compose_lec1.New.style.myStyle
+import com.example.compose_lec1.R
+import com.example.compose_lec1.Tutorial.PostCard.HomeScreen.OutlineButton
+
+class MainActivity : ComponentActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        setContent {
+
+            startScreen()
+        }
+
+    }}
+
+
+@Composable
+fun startScreen() {
+    Box(modifier = Modifier.fillMaxSize()){
+        Image(
+            painter =painterResource(R.drawable.task_image1),
+            contentDescription = "Background Image" ,
+            modifier = Modifier.fillMaxSize() ,
+            contentScale = ContentScale.Crop,
+
+        )
+
+        Column(
+            modifier = Modifier.align(Alignment.BottomCenter).padding(bottom = 50.dp, start = 20.dp, end = 20.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+
+            BasicText(
+                text = buildAnnotatedString {
+                    append("أهلا بكم في نادي : ")
+                    withStyle(style = SpanStyle(
+                        color = Color(0xFF4CAF50),
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 28.sp
+                    )) {
+
+                        withStyle(style = SpanStyle(color = Color.Yellow)) {
+                            append(" ناز")
+                        }
+
+                    }
+                },
+                style = myStyle.copy(color = Color.White, fontSize = 24.sp)
+            )
+
+            Spacer(modifier = Modifier.height(15.dp))
+            BasicText(
+                text = "اكتشف معنا المفهوم الصحيح للتدريب \n" +
+                        "التدريب مخصص من أجلك",
+                style = myStyle.copy(color = Color.White, fontSize = 24.sp)
+            )
+            Spacer(modifier = Modifier.padding(bottom = 31.dp))
+            OutlineButton(
+                onClick = {},
+                caption = "تسجيل دخول",
+                contentColor = Color.White
+
+            )
+            Spacer(modifier = Modifier.padding(bottom = 139.dp))
+
+        }
+
+
+    }
+}
+
+
+@Preview
+@Composable
+fun startScreenPreview() {
+    startScreen()
+}

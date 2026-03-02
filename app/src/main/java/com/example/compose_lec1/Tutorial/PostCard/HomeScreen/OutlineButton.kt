@@ -1,6 +1,7 @@
 package com.example.compose_lec1.Tutorial.PostCard.HomeScreen
 
 
+import android.R
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -23,26 +24,24 @@ fun OutlineButton(
     onClick : ()-> Unit,
     caption : String,
     modifier: Modifier = Modifier,
-    backgroundColor :Color = Color.Transparent,
+    backgroundColor :Color = Color.Yellow,
     shape : Shape = RoundedCornerShape(16.dp),
-outlineColor :Color = Color.Gray ,
-    contentColor: Color = Color.Gray
-    ){
+    outlineColor :Color = Color.Gray ,
+    contentColor: Color = Color.White
+){
     Box(
         modifier = modifier
             .fillMaxWidth()
             .clip(shape)
             .background(backgroundColor)
             .border(width = 1.dp, color = outlineColor, shape = shape)
-            .clickable {
-                onClick()
-            }
+            .clickable { onClick() }
             .padding(16.dp)
     ){
         BasicText(
-            text = caption ,
+            text = caption,
             modifier = Modifier.align(Alignment.Center),
-            
+            style = androidx.compose.ui.text.TextStyle(color = contentColor)
         )
     }
 }

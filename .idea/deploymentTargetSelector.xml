@@ -11,13 +11,13 @@
       <SelectionState runConfigName="MainActivity (١)">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="HomeScreen">
+      <SelectionState runConfigName="SearchScreen">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="EmptyCarActivity">
+      <SelectionState runConfigName="CartActivity">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="MainActivity (٢)">
+      <SelectionState runConfigName="SearchScreen (١)">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

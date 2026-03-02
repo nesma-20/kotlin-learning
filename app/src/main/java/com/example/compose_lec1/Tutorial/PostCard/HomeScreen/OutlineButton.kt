@@ -1,7 +1,7 @@
 package com.example.compose_lec1.Tutorial.PostCard.HomeScreen
 
 
-import android.R
+import android.provider.CalendarContract
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -18,16 +18,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.compose_lec1.New.style.myStyle
 
 @Composable
 fun OutlineButton(
-    onClick : ()-> Unit,
-    caption : String,
+    onClick: () -> Unit,
+    caption: String,
     modifier: Modifier = Modifier,
-    backgroundColor :Color = Color.Yellow,
-    shape : Shape = RoundedCornerShape(16.dp),
-    outlineColor :Color = Color.Gray ,
-    contentColor: Color = Color.White
+    backgroundColor: Color = Color.Yellow,
+    shape: Shape = RoundedCornerShape(16.dp),
+    outlineColor: Color = Color.Gray,
+    contentColor:Color =   Color.White
 ){
     Box(
         modifier = modifier
@@ -41,7 +42,7 @@ fun OutlineButton(
         BasicText(
             text = caption,
             modifier = Modifier.align(Alignment.Center),
-            style = androidx.compose.ui.text.TextStyle(color = contentColor)
+            style = myStyle.copy(contentColor)
         )
     }
 }

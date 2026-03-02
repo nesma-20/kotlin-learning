@@ -6,13 +6,12 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -24,8 +23,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 import com.example.compose_lec1.R
+import com.example.compose_lec1.Task.compo.BottomNavigationBar
 import com.example.compose_lec1.Task.compo.CartHeader
+import com.example.compose_lec1.Task.compo.MyBottomNavigationBar
 import com.example.compose_lec1.Tutorial.PostCard.HomeScreen.OutlineButton
 
 class EmptyCarActivity : ComponentActivity() {
@@ -35,71 +37,51 @@ class EmptyCarActivity : ComponentActivity() {
 
         setContent {
 
-            CardScreen()
+            CardScreen(navController = rememberNavController())
         }
 
     }
 }
-
 @Composable
-fun CardScreen() {
-    Column(
-
-
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(Color.White)
-                    .padding(10.dp)
-    ) {
-
-
-        CartHeader()
-
+fun CardScreen(navController: androidx.navigation.NavController) {
+    Scaffold(
+        topBar = { CartHeader() },
+        bottomBar = { MyBottomNavigationBar(navController = navController) }
+    ) { innerPadding ->
         Column(
-
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color.White)
                 .padding(20.dp)
-                .weight(1f),
+                .background(Color.White),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
-
         ) {
-
             Image(
                 painter = painterResource(R.drawable.shop_img),
-                contentDescription = "Empty Basket",
-                modifier = Modifier.size(250.dp),
-                contentScale = ContentScale.Fit,
-
-                )
-
-
+                contentDescription = null,
+                modifier = Modifier.size(200.dp)
+            )
             Text(
                 text = "لم تقم بإضافة أي منتج إلى السلة مؤخراً",
-                color = Color.Gray,
-                fontSize = 16.sp,
-                textAlign = TextAlign.Center ,
-                modifier = Modifier.padding(top = 20.dp, bottom = 40.dp)
-
+                modifier = Modifier.padding(20.dp),
+                color = Color.Gray
             )
-
-
+            Spacer(Modifier.padding(bottom = 46.dp))
             OutlineButton(
                 onClick = {},
                 caption = "اذهب للتسوق الآن",
                 backgroundColor = Color(0xFF9E8069),
-                contentColor = Color.White,
-                outlineColor = Color.Transparent
+                contentColor = Color.White
             )
         }
-
     }
 }
+
+
+
 
 @Preview
 @Composable
 fun CardScreenPreview() {
-    CardScreen()
+    CardScreen(navController = rememberNavController())
 }

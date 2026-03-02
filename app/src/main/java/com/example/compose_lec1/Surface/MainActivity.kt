@@ -44,7 +44,9 @@ fun AppReview(modifier: Modifier = Modifier.Companion) {
     color = Color.Companion.Green
  , shape = CutCornerShape(16.dp),
     tonalElevation = 8.dp,
-    border = BorderStroke(width = 2.dp , Color.Companion.DarkGray),
+    shadowElevation = 20.dp,
+    border = BorderStroke(width = 1.dp , Color.Companion.DarkGray),
+
 
     ) {
             Text(text = "The following error has ", modifier = Modifier.Companion.padding(16.dp))

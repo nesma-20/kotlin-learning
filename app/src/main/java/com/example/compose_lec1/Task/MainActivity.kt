@@ -69,7 +69,7 @@ class MainActivity : ComponentActivity() {
 
             Column(
                 modifier = Modifier.align(Alignment.BottomCenter)
-                    .padding(bottom = 50.dp, start = 20.dp, end = 20.dp),
+                    .padding(bottom = 30.dp, start = 20.dp, end = 20.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
@@ -84,7 +84,7 @@ class MainActivity : ComponentActivity() {
                             )
                         ) {
 
-                            withStyle(style = SpanStyle(color = Color.Yellow)) {
+                            withStyle(style = SpanStyle(color = Color(0xFFE2C488))) {
                                 append(" ناز")
                             }
 
@@ -93,7 +93,7 @@ class MainActivity : ComponentActivity() {
                     style = myStyle.copy(color = Color.White, fontSize = 24.sp)
                 )
 
-                Spacer(modifier = Modifier.height(15.dp))
+                Spacer(modifier = Modifier.height(10.dp))
                 BasicText(
                     text = "اكتشف معنا المفهوم الصحيح للتدريب \n" +
                             "التدريب مخصص من أجلك",

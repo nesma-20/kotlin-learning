@@ -100,10 +100,10 @@ Column(modifier = Modifier.fillMaxSize().background(Color(0xFFF9F9F9))) {
            items(feed) { post ->
                CarCard(
                    image = painterResource(R.drawable.car_image),
-                   title = "توسان اكسنت 2022", // مثال
+                   title = "توسان اكسنت 2022",
                    status = "ممتاز",
                    price = "500000",
-                   location = "أبو ظبي"
+                   location = "ابو ظبي"
                )
            }
        }
@@ -157,7 +157,7 @@ fun CarCard(
                     shape = RoundedCornerShape(8.dp),
                     color = Color.White,
                     modifier = Modifier
-                        .align(Alignment.BottomEnd) // يمين تحت
+                        .align(Alignment.BottomEnd)
                         .padding(8.dp),
                     shadowElevation = 1.dp
                 ) {

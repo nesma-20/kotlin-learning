@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -67,7 +68,7 @@ fun AccountScreen(onBackClick: () -> Unit, navController: NavController) {
             Spacer(modifier = Modifier.height(40.dp))
 
             Button(
-                onClick = { /* Save */ },
+                onClick = {  },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(50.dp),
@@ -80,3 +81,13 @@ fun AccountScreen(onBackClick: () -> Unit, navController: NavController) {
     }
 }
 
+
+@Preview(showBackground = true)
+@Composable
+fun AccountScreenPreview() {
+    val navController = androidx.navigation.compose.rememberNavController()
+    AccountScreen(
+        onBackClick = {  },
+        navController = navController
+    )
+}

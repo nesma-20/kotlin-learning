@@ -32,7 +32,7 @@ fun CartHeader() {
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        //  سهم الرجوع
+
         Image(
             painter = painterResource(id = R.drawable.baseline_arrow_back_ios_24),
             contentDescription = "Back",

@@ -17,6 +17,6 @@ private val shareTech = FontFamily(
 val myStyle = TextStyle(
     color = Color.Black,
     fontStyle = FontStyle.Italic,
-    fontSize = 32.sp,
+    fontSize = 22.sp,
   fontFamily = shareTech
     )

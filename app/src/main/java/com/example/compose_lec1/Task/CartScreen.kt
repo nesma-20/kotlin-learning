@@ -47,7 +47,6 @@ fun CartScreen() {
             CenterAlignedTopAppBar(
                 title = { Text("سلة المشتريات", fontWeight = FontWeight.Bold, fontSize = 18.sp) },
                 navigationIcon = {
-                    // ✅ تم الإصلاح: الآن الضغط هنا يفتح الـ Sheet
                     IconButton(onClick = { showSheet = true }) {
                         Icon(
                             painter = painterResource(id = R.drawable.delete),
@@ -111,104 +110,106 @@ fun CartProductItem() {
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 4.dp),
-        colors = CardDefaults.cardColors(containerColor = Color(0xFFFBFBFB)),
-        // إضافة Border خفيف جداً ليشبه التصميم
-        border = BorderStroke(0.5.dp, Color.LightGray.copy(alpha = 0.5f)),
-        shape = RoundedCornerShape(12.dp)
+        colors = CardDefaults.cardColors(containerColor = Color.White),
+        border = BorderStroke(0.5.dp, Color(0xFFE0E0E0)),
+        shape = RoundedCornerShape(15.dp)
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(12.dp),
-            verticalAlignment = Alignment.CenterVertically,
-
+            verticalAlignment = Alignment.CenterVertically
         ) {
 
+            Checkbox(
+                checked = isChecked,
+                onCheckedChange = { isChecked = it },
+                colors = CheckboxDefaults.colors(
+                    checkedColor = Color(0xFF9E8069),
+                    uncheckedColor = Color.LightGray
+                )
+            )
 
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center,
+            Spacer(modifier = Modifier.width(8.dp))
+
+            Box(
                 modifier = Modifier
-                    .background(Color(0xFFEFE6DE), RoundedCornerShape(8.dp)) // خلفية خفيفة للأزرار
-                    .padding(4.dp)
+                    .size(85.dp)
+                    .background(Color(0xFFFDF2E9), RoundedCornerShape(12.dp)),
+                contentAlignment = Alignment.Center
             ) {
-                IconButton(onClick = { quantity++ }, modifier = Modifier.size(24.dp)) {
-                    Icon(painterResource(id = R.drawable.plas), contentDescription = null, tint = Color(0xFF9E8069))
-                }
-                Text(
-                    text = "$quantity",
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 16.sp,
-                    modifier = Modifier.padding(vertical = 2.dp)
-                )
-                IconButton(onClick = { if (quantity > 1) quantity-- }, modifier = Modifier.size(24.dp)) {
-                    Icon(painterResource(id = R.drawable.decriment), contentDescription = null, tint = Color.Gray)
-                }
-            }
-
-            Spacer(modifier = Modifier.width(16.dp))
-
-            // 2. السعر ومعلومات الحذاء (في المنتصف)
-            Column(
-                modifier = Modifier.weight(1f),
-                horizontalAlignment = Alignment.End
-            ) {
-                Text(
-                    text = "حذاء رياضي",
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 18.sp,
-                    color = Color.Black
-                )
-
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.padding(vertical = 4.dp)
-                ) {
-                    Text(text = "42", fontWeight = FontWeight.Medium, fontSize = 14.sp)
-                    Text(text = " : المقاس ", color = Color.Gray, fontSize = 14.sp)
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Box(
-                        modifier = Modifier
-                            .size(12.dp)
-                            .background(Color.Black, CircleShape)
-                    )
-                    Text(text = " : اللون ", color = Color.Gray, fontSize = 14.sp)
-                }
-
-                Text(
-                    text = "$18",
-                    fontWeight = FontWeight.ExtraBold,
-                    color = Color.Black, // في الصورة السعر لونه أسود وواضح
-                    fontSize = 20.sp
+                Image(
+                    painter = painterResource(id = R.drawable.shose),
+                    contentDescription = null,
+                    modifier = Modifier.size(70.dp),
+                    contentScale = ContentScale.Fit
                 )
             }
 
             Spacer(modifier = Modifier.width(12.dp))
 
-            // 3. صورة المنتج
-            Box(contentAlignment = Alignment.Center) {
-                Image(
-                    painter = painterResource(id = R.drawable.shose),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .size(90.dp)
-                        .clip(RoundedCornerShape(12.dp))
-                        .background(Color(0xFFF3F3F3)), // خلفية الصورة فاتحة
-                    contentScale = ContentScale.Fit
+            Column(
+                modifier = Modifier.weight(1f),
+                horizontalAlignment = Alignment.Start
+            ) {
+
+                Text(
+                    text = "حذاء رياضي",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 17.sp,
+                    color = Color.Black
                 )
+
+
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.padding(vertical = 4.dp)
+                ) {
+                    Text(text = "المقاس : ", color = Color.Gray, fontSize = 13.sp)
+                    Text(text = "42", fontWeight = FontWeight.Normal, fontSize = 13.sp)
+                    Spacer(modifier = Modifier.width(12.dp))
+                    Text(text = "اللون : ", color = Color.Gray, fontSize = 13.sp)
+                    Box(modifier = Modifier.size(10.dp).background(Color.Black, CircleShape))
+                }
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+
+                    Text(
+                        text = "$18",
+                        fontWeight = FontWeight.ExtraBold,
+                        color = Color.Black,
+                        fontSize = 19.sp
+                    )
+
+
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier
+                            .background(Color(0xFFF3EEE9), RoundedCornerShape(8.dp))
+                            .padding(horizontal = 4.dp, vertical = 2.dp)
+                    ) {
+                        IconButton(onClick = { if (quantity > 1) quantity-- }, modifier = Modifier.size(24.dp)) {
+                            Icon(painterResource(id = R.drawable.decriment), null, tint = Color.LightGray, modifier = Modifier.size(12.dp))
+                        }
+                        Text(text = "$quantity", fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                        IconButton(onClick = { quantity++ }, modifier = Modifier.size(24.dp)) {
+                            Icon(painterResource(id = R.drawable.plas), null, tint = Color(0xFF9E8069), modifier = Modifier.size(12.dp))
+                        }
+                    }
+                }
             }
-
-            Spacer(modifier = Modifier.width(8.dp))
-
-            // 4. Checkbox (على اليمين تماماً)
-            Checkbox(
-                checked = isChecked,
-                onCheckedChange = { isChecked = it },
-                colors = CheckboxDefaults.colors(checkedColor = Color(0xFF9E8069))
-            )
         }
     }
 }
+
+
 @Composable
 fun CartBottomBar() {
     Column(modifier = Modifier.fillMaxWidth().padding(20.dp)) {
@@ -242,7 +243,6 @@ fun DeleteConfirmationSheetContent(onCancel: () -> Unit, onConfirm: () -> Unit) 
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        // بطاقة المنتج المصغرة داخل الشيت
         Card(
             modifier = Modifier.fillMaxWidth(),
             colors = CardDefaults.cardColors(containerColor = Color(0xFFF9F9F9)),
@@ -286,5 +286,15 @@ fun DeleteConfirmationSheetContent(onCancel: () -> Unit, onConfirm: () -> Unit) 
             }
         }
         Spacer(modifier = Modifier.height(25.dp))
+    }
+}
+
+@Preview(showBackground = true, device = "spec:width=411dp,height=891dp", showSystemUi = true)
+@Composable
+fun CartScreenPreview() {
+    androidx.compose.runtime.CompositionLocalProvider(
+        androidx.compose.ui.platform.LocalLayoutDirection provides androidx.compose.ui.unit.LayoutDirection.Rtl
+    ) {
+        CartScreen()
     }
 }
